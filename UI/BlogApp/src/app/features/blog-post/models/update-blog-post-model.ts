@@ -1,4 +1,4 @@
-export interface AddBlogPost {
+export interface UpdateBlogPost{
     title : string;
     shortDescription : string;
     content : string;
@@ -8,4 +8,4 @@ export interface AddBlogPost {
     publishedDate : Date;
     isVisible : boolean;
     categories : string[];
-} 
+}
