@@ -11,10 +11,12 @@ namespace BlogApp.API.Controllers
     public class BlogPostsController : ControllerBase
     {
         private readonly IBlogPostRepository _blogPostRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public BlogPostsController(IBlogPostRepository blogPostRepository)
+        public BlogPostsController(IBlogPostRepository blogPostRepository,ICategoryRepository categoryRepository)
         {
             this._blogPostRepository = blogPostRepository;
+            this._categoryRepository = categoryRepository;
         }
 
         //POST : {apibaseUrl}/api/blogposts
@@ -31,8 +33,18 @@ namespace BlogApp.API.Controllers
                 IsVisbile = request.IsVisbile,
                 PublishedDate = request.PublishedDate,
                 ShortDescription = request.ShortDescription,
-                UrlHandle = request.UrlHandle
+                UrlHandle = request.UrlHandle,
+                Categories = new List<Category>()
             };
+
+            foreach (var categoryGuid in request.Categories)
+            {
+                var existingCategory = await _categoryRepository.GetByIdAsync(categoryGuid);
+                if(existingCategory is not null)
+                {
+                    blogPost.Categories.Add(existingCategory);
+                }
+            }
 
             blogPost = await _blogPostRepository.CreateAsync(blogPost);
 
@@ -48,7 +60,13 @@ namespace BlogApp.API.Controllers
                 PublishedDate= blogPost.PublishedDate,
                 ShortDescription= blogPost.ShortDescription,
                 UrlHandle = blogPost.UrlHandle,
-                Title = blogPost.Title
+                Title = blogPost.Title,
+                Categories = blogPost.Categories.Select(x=>new CategoryDto
+                {
+                    Id=x.Id,
+                    CategoryName = x.Name,
+                    UrlHandle = x.UrlHandle
+                }).ToList()
             };
 
             return Ok(response);
@@ -76,11 +94,137 @@ namespace BlogApp.API.Controllers
                     PublishedDate = blogPost.PublishedDate,
                     ShortDescription = blogPost.ShortDescription,
                     UrlHandle = blogPost.UrlHandle,
-                    Title = blogPost.Title
+                    Title = blogPost.Title,
+                    Categories = blogPost.Categories.Select(x => new CategoryDto
+                    {
+                        Id = x.Id,
+                        CategoryName = x.Name,
+                        UrlHandle = x.UrlHandle
+                    }).ToList()
                 });
             }
 
             return Ok(response);
+        }
+
+        //GET : {apibaseUrl}/api/blogposts/{id}
+        [HttpGet]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> GetBlogPostById(Guid id)
+        {
+            var blogPost = await _blogPostRepository.GetByIdAync(id);
+
+            if (blogPost is null)
+                return NotFound();
+
+            //Convert Domain model to DTO
+            var response = new BlogPostDto
+            {
+                Id = blogPost.Id,
+                Author = blogPost.Author,
+                Content = blogPost.Content,
+                FeaturedImageUrl = blogPost.FeaturedImageUrl,
+                IsVisbile = blogPost.IsVisbile,
+                PublishedDate = blogPost.PublishedDate,
+                ShortDescription = blogPost.ShortDescription,
+                UrlHandle = blogPost.UrlHandle,
+                Title = blogPost.Title,
+                Categories = blogPost.Categories.Select(x => new CategoryDto
+                {
+                    Id = x.Id,
+                    CategoryName = x.Name,
+                    UrlHandle = x.UrlHandle
+                }).ToList()
+            };
+
+            return Ok(response);
+        }
+
+        //PUT : {apibaseUrl}/api/blogposts
+        [HttpPut]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> EditBlogPost([FromRoute] Guid id, UpdateBlogPostRequestDto request)
+        {
+            //Convert Dto to Domain
+            var blogPost = new BlogPost
+            {
+                Id = id,
+                Title = request.Title,
+                Author = request.Author,
+                Content = request.Content,
+                FeaturedImageUrl = request.FeaturedImageUrl,
+                IsVisbile = request.IsVisbile,
+                PublishedDate = request.PublishedDate,
+                ShortDescription = request.ShortDescription,
+                UrlHandle = request.UrlHandle,
+                Categories = new List<Category>()
+            };
+            
+            foreach(var categoryGuid in request.Categories)
+            {
+                var existingCategory = await _categoryRepository.GetByIdAsync(categoryGuid);
+
+                if(existingCategory is not null)
+                {
+                    blogPost.Categories.Add(existingCategory);
+                }
+                
+            }
+            
+            var updatedBlogPost = await _blogPostRepository.EditBlogPostAsync(blogPost);
+
+            if(updatedBlogPost is null) 
+                return NotFound();
+
+            //Convert domain model back to Dto
+            var response = new BlogPostDto
+            {
+                Id = blogPost.Id,
+                Author = blogPost.Author,
+                Content = blogPost.Content,
+                FeaturedImageUrl = blogPost.FeaturedImageUrl,
+                IsVisbile = blogPost.IsVisbile,
+                PublishedDate = blogPost.PublishedDate,
+                ShortDescription = blogPost.ShortDescription,
+                UrlHandle = blogPost.UrlHandle,
+                Title = blogPost.Title,
+                Categories = blogPost.Categories.Select(x => new CategoryDto
+                {
+                    Id = x.Id,
+                    CategoryName = x.Name,
+                    UrlHandle = x.UrlHandle
+                }).ToList()
+            };
+
+            return Ok(response);
+        }
+
+        //DELETE : {apibaseUrl}/api/blogposts/id
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> DeleteBlogPost([FromRoute] Guid id)
+        {
+            var blogPost = await _blogPostRepository.DeleteBlogPostAsync(id);
+
+            if(blogPost is null) 
+                return NotFound();
+
+            //Convert Domain model to Dto
+            var response = new BlogPostDto
+            {
+                Id = blogPost.Id,
+                Author = blogPost.Author,
+                Content = blogPost.Content,
+                FeaturedImageUrl = blogPost.FeaturedImageUrl,
+                IsVisbile = blogPost.IsVisbile,
+                PublishedDate = blogPost.PublishedDate,
+                ShortDescription = blogPost.ShortDescription,
+                UrlHandle = blogPost.UrlHandle,
+                Title = blogPost.Title
+            };
+
+            return Ok(response);
+
         }
     }
 }

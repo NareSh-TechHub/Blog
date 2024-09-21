@@ -11,5 +11,7 @@
         public DateTime PublishedDate { get; set; }
         public string Author { get; set; }
         public bool IsVisbile { get; set; }
+
+        public List<CategoryDto> Categories { get; set; }
     }
 }
