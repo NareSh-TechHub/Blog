@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "icgp9P+pe5//nS9iicZaOfuKfy8VZspRh4OEF0KS56VcOTWyZgFRhWPz4mmAvTJGHV+VHy/EqK0XBJZXXy87rg==",
+  "dgSpecHash": "HAkYfvZb3IEWZ8XW60d/7gUvFmBTgS7ovQx9U4xlRrlV7E+atjIslcrnIFmiRoNymYb18PZ2S3ZOYzSyjbFlpQ==",
   "success": true,
-  "projectFilePath": "E:\\Projects\\Angular\\.NetCore_Angular\\BlogManager\\API\\BlogApp.API\\BlogApp.API\\BlogApp.API.csproj",
+  "projectFilePath": "E:\\Projects\\Angular\\.NetCore_Angular\\Blog\\API\\BlogApp.API\\BlogApp.API\\BlogApp.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

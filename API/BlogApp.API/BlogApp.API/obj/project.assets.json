@@ -3431,11 +3431,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projects\\Angular\\.NetCore_Angular\\BlogManager\\API\\BlogApp.API\\BlogApp.API\\BlogApp.API.csproj",
+      "projectUniqueName": "E:\\Projects\\Angular\\.NetCore_Angular\\Blog\\API\\BlogApp.API\\BlogApp.API\\BlogApp.API.csproj",
       "projectName": "BlogApp.API",
-      "projectPath": "E:\\Projects\\Angular\\.NetCore_Angular\\BlogManager\\API\\BlogApp.API\\BlogApp.API\\BlogApp.API.csproj",
+      "projectPath": "E:\\Projects\\Angular\\.NetCore_Angular\\Blog\\API\\BlogApp.API\\BlogApp.API\\BlogApp.API.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "E:\\Projects\\Angular\\.NetCore_Angular\\BlogManager\\API\\BlogApp.API\\BlogApp.API\\obj\\",
+      "outputPath": "E:\\Projects\\Angular\\.NetCore_Angular\\Blog\\API\\BlogApp.API\\BlogApp.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
