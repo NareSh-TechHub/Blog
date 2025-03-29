@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CategoryService } from '../../category/services/category.service';
 import { Category } from '../../category/models/category.model';
 import { Observable } from 'rxjs';
+import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 
 @Component({
   selector: 'app-add-blogpost',
@@ -41,6 +42,11 @@ export class AddBlogpostComponent implements OnInit {
         this.router.navigateByUrl('/admin/blogposts');
       }
     });
+  }
+
+  changedEditor(event: EditorChangeContent | EditorChangeSelection){
+    console.log('Editor Changed',event);
+    this.model.content = event['editor']['root']['innerHTML'];
   }
 
 }
