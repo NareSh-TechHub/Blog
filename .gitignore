@@ -404,3 +404,32 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Ignore Visual Studio files
+.vs/
+*.user
+*.suo
+
+# Build output
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+
+# Rider and VS Code folders
+.idea/
+.vscode/
+
+# ASP.NET temporary files
+ScaffoldingReadMe.txt
+*.dbmdl
+
+# Logs and others
+*.log
+
+# Ignore the .vs folder inside BlogApp.API
+API/BlogApp.API/.vs/
+
+# Ignore bin and obj folders inside the BlogApp.API project
+API/BlogApp.API/BlogApp.API/bin/
+API/BlogApp.API/BlogApp.API/obj/
