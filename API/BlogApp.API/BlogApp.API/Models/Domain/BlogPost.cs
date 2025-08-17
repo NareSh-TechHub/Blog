@@ -3,16 +3,16 @@
     public class BlogPost
     {
         public Guid Id { get; set; }
-        public string Title { get; set; }
-        public string ShortDescription { get; set; }
-        public string Content { get; set; }
-        public string FeaturedImageUrl { get; set; }
-        public string UrlHandle { get; set; }
+        public required string Title { get; set; }
+        public required string ShortDescription { get; set; }
+        public required string Content { get; set; }
+        public string FeaturedImageUrl { get; set; } = string.Empty;
+        public required string UrlHandle { get; set; }
         public DateTime PublishedDate { get; set; }
-        public string Author { get; set; }
+        public required Guid UserId { get; set; }
         public bool IsVisbile { get; set; }
-
-        public ICollection<Category> Categories { get; set; }
+        public User? User { get; set; } 
+        public required ICollection<Category> Categories { get; set; }
 
     }
 }
