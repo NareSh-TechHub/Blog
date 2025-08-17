@@ -27,7 +27,7 @@ namespace BlogApp.API.Controllers
             var blogPost = new BlogPost()
             {
                 Title = request.Title,
-                Author = request.Author,
+                UserId = request.UserId,
                 Content = request.Content,
                 FeaturedImageUrl = request.FeaturedImageUrl,
                 IsVisbile = request.IsVisbile,
@@ -53,7 +53,7 @@ namespace BlogApp.API.Controllers
             var response = new BlogPostDto()
             {
                 Id = blogPost.Id,
-                Author = blogPost.Author,
+                UserId = blogPost.UserId,
                 Content = blogPost.Content,
                 FeaturedImageUrl = blogPost.FeaturedImageUrl,
                 IsVisbile= blogPost.IsVisbile,
@@ -87,7 +87,7 @@ namespace BlogApp.API.Controllers
                 response.Add(new BlogPostDto()
                 {
                     Id = blogPost.Id,
-                    Author = blogPost.Author,
+                    UserId = blogPost.UserId,
                     Content = blogPost.Content,
                     FeaturedImageUrl = blogPost.FeaturedImageUrl,
                     IsVisbile = blogPost.IsVisbile,
@@ -121,7 +121,7 @@ namespace BlogApp.API.Controllers
             var response = new BlogPostDto
             {
                 Id = blogPost.Id,
-                Author = blogPost.Author,
+                UserId = blogPost.UserId,
                 Content = blogPost.Content,
                 FeaturedImageUrl = blogPost.FeaturedImageUrl,
                 IsVisbile = blogPost.IsVisbile,
@@ -150,7 +150,7 @@ namespace BlogApp.API.Controllers
             {
                 Id = id,
                 Title = request.Title,
-                Author = request.Author,
+                UserId = request.UserId,
                 Content = request.Content,
                 FeaturedImageUrl = request.FeaturedImageUrl,
                 IsVisbile = request.IsVisbile,
@@ -180,7 +180,7 @@ namespace BlogApp.API.Controllers
             var response = new BlogPostDto
             {
                 Id = blogPost.Id,
-                Author = blogPost.Author,
+                UserId = blogPost.UserId,
                 Content = blogPost.Content,
                 FeaturedImageUrl = blogPost.FeaturedImageUrl,
                 IsVisbile = blogPost.IsVisbile,
@@ -213,14 +213,20 @@ namespace BlogApp.API.Controllers
             var response = new BlogPostDto
             {
                 Id = blogPost.Id,
-                Author = blogPost.Author,
+                UserId = blogPost.UserId,
                 Content = blogPost.Content,
                 FeaturedImageUrl = blogPost.FeaturedImageUrl,
                 IsVisbile = blogPost.IsVisbile,
                 PublishedDate = blogPost.PublishedDate,
                 ShortDescription = blogPost.ShortDescription,
                 UrlHandle = blogPost.UrlHandle,
-                Title = blogPost.Title
+                Title = blogPost.Title,
+                Categories = blogPost.Categories.Select(x => new CategoryDto
+                {
+                    Id = x.Id,
+                    CategoryName = x.Name,
+                    UrlHandle = x.UrlHandle
+                }).ToList()
             };
 
             return Ok(response);

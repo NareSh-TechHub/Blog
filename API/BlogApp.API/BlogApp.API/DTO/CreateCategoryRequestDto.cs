@@ -2,7 +2,8 @@
 {
     public class CreateCategoryRequestDto
     {
-        public string Name { get; set; }
-        public string UrlHandle { get; set; }
+        public required string CategoryName { get; set; }
+        public string? Description { get; set; }
+        public required string UrlHandle { get; set; }
     }
 }

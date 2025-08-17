@@ -31,7 +31,8 @@ namespace BlogApp.API.Controllers
 
             var category = new Category()
             {
-                Name = request.Name,
+                Name = request.CategoryName,
+                Description = request.Description,
                 UrlHandle = request.UrlHandle
             };
 
@@ -97,6 +98,7 @@ namespace BlogApp.API.Controllers
             {
                 Id = id,
                 Name = request.Name,
+                Description = request.Description,
                 UrlHandle = request.UrlHandle
             };
 
