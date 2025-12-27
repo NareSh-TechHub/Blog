@@ -1,9 +1,10 @@
 using BlogApp.API.Models.Data;
 using BlogApp.API.Repositories.Implementation;
 using BlogApp.API.Repositories.Interface;
+using BlogApp.API.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -54,6 +55,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options => {
 
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IBlogPostRepository, BlogPostRepository>();
+builder.Services.AddScoped<SeedDataService>();
 
 var app = builder.Build();
 
@@ -77,5 +79,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using var scope = app.Services.CreateScope();
+await scope.ServiceProvider.GetRequiredService<SeedDataService>().SeedAsync();
 
 app.Run();
