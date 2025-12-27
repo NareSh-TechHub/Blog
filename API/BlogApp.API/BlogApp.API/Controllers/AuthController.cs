@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -40,7 +41,9 @@ namespace BlogApp.API.Controllers
                 return BadRequest(result.Errors);
             }
 
-            var token = GenerateJwtToken(user);
+            await _userManager.AddToRoleAsync(user, "Viewer");
+
+            var token = await GenerateJwtToken(user);
 
             var response = new AuthResponseDto
             {
@@ -67,7 +70,7 @@ namespace BlogApp.API.Controllers
                 return Unauthorized("Invalid credentials");
             }
 
-            var token = GenerateJwtToken(user);
+            var token = await GenerateJwtToken(user);
 
             var response = new AuthResponseDto
             {
@@ -81,22 +84,27 @@ namespace BlogApp.API.Controllers
 
         [HttpPost("logout")]
         [Authorize]
-        public async Task<IActionResult> Logout()
+        public IActionResult Logout()
         {
-            await _signInManager.SignOutAsync();
             return Ok(new { message = "Logged out successfully" });
         }
 
-        private string GenerateJwtToken(IdentityUser user)
+        private async Task<string> GenerateJwtToken(IdentityUser user)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var roles = await _userManager.GetRolesAsync(user);
 
-            var claims = new[]
+            var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
-                new Claim(ClaimTypes.Email, user.Email!)
+                new(ClaimTypes.NameIdentifier, user.Id),
+                new(ClaimTypes.Email, user.Email!)
             };
+
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],

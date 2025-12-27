@@ -1,11 +1,13 @@
 ﻿using BlogApp.API.DTO;
 using BlogApp.API.Models.Domain;
 using BlogApp.API.Repositories.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogApp.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController] 
     public class BlogPostsController : ControllerBase
