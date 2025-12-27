@@ -8,7 +8,7 @@
         public string FeaturedImageUrl { get; set; } = string.Empty;
         public required string UrlHandle { get; set; }
         public DateTime PublishedDate { get; set; }
-        public required Guid UserId { get; set; }
+        public required string UserId { get; set; }
         public bool IsVisbile { get; set; }
         public List<Guid> Categories { get; set; } = new List<Guid>();
     }

@@ -1,4 +1,6 @@
-﻿namespace BlogApp.API.Models.Domain
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace BlogApp.API.Models.Domain
 {
     public class BlogPost
     {
@@ -9,9 +11,9 @@
         public string FeaturedImageUrl { get; set; } = string.Empty;
         public required string UrlHandle { get; set; }
         public DateTime PublishedDate { get; set; }
-        public required Guid UserId { get; set; }
+        public required string UserId { get; set; }
         public bool IsVisbile { get; set; }
-        public User? User { get; set; } 
+        public IdentityUser? User { get; set; } 
         public required ICollection<Category> Categories { get; set; }
 
     }
