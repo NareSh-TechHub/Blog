@@ -43,6 +43,12 @@ namespace BlogApp.API.Controllers
 
             await _userManager.AddToRoleAsync(user, "Viewer");
 
+            if (request.CreatorAccessRequested)
+            {
+                await _userManager.AddClaimAsync(user, new Claim("creator_request", "true"));
+                await _userManager.AddClaimAsync(user, new Claim("creator_requested_at", DateTimeOffset.UtcNow.ToString("O")));
+            }
+
             var token = await GenerateJwtToken(user);
 
             var response = new AuthResponseDto
