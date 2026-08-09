@@ -19,7 +19,8 @@ export class AddCategoryComponent implements OnDestroy {
     
     //initializing the model
     this.model = {
-      name : '',
+      categoryName : '',
+      description: '',
       urlHandle : ''
     };
   }
