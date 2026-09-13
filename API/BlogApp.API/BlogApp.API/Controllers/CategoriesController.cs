@@ -6,10 +6,12 @@ using BlogApp.API.Models.Data;
 using BlogApp.API.Repositories.Interface;
 using BlogApp.API.Repositories.Implementation;
 using System.ComponentModel;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace BlogApp.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
