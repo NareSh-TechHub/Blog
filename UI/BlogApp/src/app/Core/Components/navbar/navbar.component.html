@@ -7,24 +7,21 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active white-text mt-2 mb-2" aria-current="page" href="#">Categories</a>
+            <a class="nav-link active white-text mt-2 mb-2" aria-current="page" [routerLink]="['/admin/categories']">Categories</a>
           </li>
           <li class="nav-item dropdown">
             <button class="btn nav-control" type="button">Admin</button>
-            <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Admin
-            </a> -->
-            <!-- <ul class="dropdown-menu">
-              <li><a class="dropdown-item" [routerLink]="['/admin/categories']">Categories</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" [routerLink]="['/admin/blogposts']">BlogPosts</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul> -->
           </li>
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control nav-control custom-search" type="search" placeholder="Search for blog or Category..." aria-label="Search"/>
-          <button class="btn nav-control" type="button">SignOut</button>
+          <ng-container *ngIf="user$ | async as user; else signInBtn">
+            <span class="white-text me-2">{{ user.email }}</span>
+            <button class="btn nav-control" type="button" (click)="onLogout()">Sign Out</button>
+          </ng-container>
+          <ng-template #signInBtn>
+            <button class="btn nav-control" type="button" [routerLink]="['/login']">Sign In</button>
+          </ng-template>
         </form>
       </div>
     </div>

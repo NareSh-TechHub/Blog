@@ -13,6 +13,10 @@ import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpo
 import { AddBlogpostComponent } from './features/blog-post/add-blogpost/add-blogpost.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
+import { LoginComponent } from './features/auth/login/login.component';
+import { RegisterComponent } from './features/auth/register/register.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './Core/interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-b
     EditCategoryComponent,
     BlogpostListComponent,
     AddBlogpostComponent,
-    EditBlogpostComponent
+    EditBlogpostComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,9 @@ import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-b
     HttpClientModule,
     MarkdownModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

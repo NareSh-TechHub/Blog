@@ -24,7 +24,7 @@ export class AddBlogpostComponent implements OnInit {
       featuredImageUrl : '',
       urlHandle : '',
       content : '',
-      author : '',
+      userId : '',
       publishedDate : new Date(),
       isVisible : true,
       categories : []

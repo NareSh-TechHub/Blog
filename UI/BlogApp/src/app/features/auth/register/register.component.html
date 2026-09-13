@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh; background:#eef0f8">
+  <div class="card p-4 shadow-sm" style="width: 360px;">
+    <h4 class="text-center fw-bold mb-4">Create Account</h4>
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" placeholder="Enter your email"
+          name="email" [(ngModel)]="model.email" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" placeholder="Enter your password"
+          name="password" [(ngModel)]="model.password" required />
+      </div>
+      <div class="mb-3 d-flex align-items-center justify-content-between">
+        <label class="form-label mb-0">Request Creator Access</label>
+        <div class="d-flex align-items-center gap-2">
+          <div class="form-check form-switch mb-0">
+            <input class="form-check-input" type="checkbox" name="requestCreatorAccess"
+              [(ngModel)]="model.creatorAccessRequested" />
+          </div>
+          <small class="text-muted">{{ model.creatorAccessRequested ? 'Creator access' : 'Read-only access' }}</small>
+        </div>
+      </div>
+      <button type="submit" class="btn w-100 text-white" style="background:#4D8470">Sign Up</button>
+    </form>
+    <p class="text-center mt-3 mb-0 small">
+      Already have an account? <a [routerLink]="['/login']">Sign in</a>
+    </p>
+  </div>
+</div>

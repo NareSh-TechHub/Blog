@@ -4,7 +4,7 @@ export interface AddBlogPost {
     content : string;
     featuredImageUrl : string;
     urlHandle : string;
-    author : string;
+    userId : string;
     publishedDate : Date;
     isVisible : boolean;
     categories : string[];

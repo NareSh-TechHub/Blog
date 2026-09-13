@@ -211,28 +211,7 @@ namespace BlogApp.API.Controllers
             if(blogPost is null) 
                 return NotFound();
 
-            //Convert Domain model to Dto
-            var response = new BlogPostDto
-            {
-                Id = blogPost.Id,
-                UserId = blogPost.UserId,
-                Content = blogPost.Content,
-                FeaturedImageUrl = blogPost.FeaturedImageUrl,
-                IsVisbile = blogPost.IsVisbile,
-                PublishedDate = blogPost.PublishedDate,
-                ShortDescription = blogPost.ShortDescription,
-                UrlHandle = blogPost.UrlHandle,
-                Title = blogPost.Title,
-                Categories = blogPost.Categories.Select(x => new CategoryDto
-                {
-                    Id = x.Id,
-                    CategoryName = x.Name,
-                    UrlHandle = x.UrlHandle
-                }).ToList()
-            };
-
-            return Ok(response);
-
+            return NoContent();
         }
     }
 }
