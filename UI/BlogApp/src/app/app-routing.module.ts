@@ -8,6 +8,7 @@ import { AddBlogpostComponent } from './features/blog-post/add-blogpost/add-blog
 import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
+import { LandingComponent } from './features/landing/landing.component';
 
 const routes: Routes = [
   {
@@ -34,12 +35,22 @@ const routes: Routes = [
     path:'admin/blogposts/:id',
     component : EditBlogpostComponent
   },
-  { path: 'login', 
+  { 
+    path: 'login', 
     component: LoginComponent 
   },
-  { path: 'register', 
+  { 
+    path: 'register', 
     component: RegisterComponent 
   },
+  { 
+    path: '', 
+    component: LandingComponent 
+  },
+  { 
+    path: '**', 
+    redirectTo: '' 
+  }
 ];
 
 @NgModule({

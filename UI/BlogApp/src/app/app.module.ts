@@ -17,6 +17,7 @@ import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './Core/interceptor/auth.interceptor';
+import { LandingComponent } from './features/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AuthInterceptor } from './Core/interceptor/auth.interceptor';
     EditBlogpostComponent,
     LoginComponent,
     RegisterComponent,
+    LandingComponent,
   ],
   imports: [
     BrowserModule,

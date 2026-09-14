@@ -15,7 +15,7 @@ export class LoginComponent {
 
   onSubmit(): void {
     this.authService.login(this.model).subscribe({
-      next: () => this.router.navigateByUrl('/admin/categories')
+      next: () => this.router.navigateByUrl('/')
     });
   }
 }
