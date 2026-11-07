@@ -1,0 +1,37 @@
+<main class="admin-dashboard">
+  <aside class="admin-sidebar">
+    <h1>Admin<br>Dashboard</h1>
+    <nav aria-label="Admin dashboard">
+      <a routerLink="/admin/blogposts" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <svg class="nav-icon" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M4 1.5h5.2L13 5.3v8.2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-11a1 1 0 0 1 1-1Z" fill="currentColor"/>
+          <path d="M9 1.8v3.7h3.7M5.5 8h5M5.5 10.5h5" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1"/>
+        </svg>
+        Posts
+      </a>
+      <a routerLink="/admin/categories" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <svg class="nav-icon" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M1 3.5a1 1 0 0 1 1-1h4l1.5 1.7H14a1 1 0 0 1 1 1v7.3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3.5Z" fill="currentColor"/>
+        </svg>
+        Categories
+      </a>
+      <span class="sidebar-item" aria-disabled="true">
+        <svg class="nav-icon" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M10.5 1.5H3a1.5 1.5 0 0 0-1.5 1.5v10A1.5 1.5 0 0 0 3 14.5h7a1.5 1.5 0 0 0 1.5-1.5V8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+          <path d="m6 10 2.2-.5 6-6a1.4 1.4 0 0 0-2-2l-6 6L6 10Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+        </svg>
+        Approve Edits
+      </span>
+      <a routerLink="/admin/creator-access" routerLinkActive="active">
+        <svg class="nav-icon" viewBox="0 0 18 16" aria-hidden="true">
+          <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM1.5 14.5c0-2.5 2.6-4.5 6.5-4.5s6.5 2 6.5 4.5v.5h-13v-.5ZM15 2v2h-2v1h2v2h1V5h2V4h-2V2h-1Z" fill="currentColor"/>
+        </svg>
+        Approve Creator Access
+      </a>
+    </nav>
+  </aside>
+
+  <section class="admin-content" aria-live="polite">
+    <router-outlet></router-outlet>
+  </section>
+</main>

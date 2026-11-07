@@ -19,6 +19,10 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './Core/interceptor/auth.interceptor';
 import { LandingComponent } from './features/landing/landing.component';
 import { FooterComponent } from './Core/Components/footer/footer.component';
+import { AdminDashboardComponent } from './features/admin/admin-dashboard/admin-dashboard.component';
+import { CreatorAccessComponent } from './features/admin/creator-access/creator-access.component';
+import { AdminBlogPostListComponent } from './features/admin/blog-post-list/admin-blog-post-list.component';
+import { AdminCategoryListComponent } from './features/admin/category-list/admin-category-list.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,10 @@ import { FooterComponent } from './Core/Components/footer/footer.component';
     LoginComponent,
     RegisterComponent,
     LandingComponent,
+    AdminDashboardComponent,
+    CreatorAccessComponent,
+    AdminBlogPostListComponent,
+    AdminCategoryListComponent,
   ],
   imports: [
     BrowserModule,

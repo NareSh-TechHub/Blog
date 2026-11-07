@@ -22,6 +22,12 @@ export class NavbarComponent {
     return this.getDisplayName(email).charAt(0);
   }
 
+  isAdminUser(roles: string[]): boolean {
+    return roles.some(role =>
+      role.toLowerCase() === 'admin' || role.toLowerCase() === 'superadmin'
+    );
+  }
+
   onLogout(): void {
     this.userMenuOpen = false;
     this.authService.logout().subscribe({

@@ -1,0 +1,89 @@
+.page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.page-heading h2 {
+  margin: 0;
+  color: #202b36;
+  font-size: 1.35rem;
+  font-weight: 650;
+}
+
+.create-button {
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 5px;
+  background: #4d8470;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.table-frame {
+  overflow-x: auto;
+  border: 1px solid #e5e9ec;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgb(26 39 48 / 8%);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #26313b;
+  font-size: 0.9rem;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 12px 16px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.admin-table th {
+  border-bottom: 1px solid #e9ecef;
+  color: #7a8490;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.admin-table tbody tr + tr td {
+  border-top: 1px solid #edf0f2;
+}
+
+.actions-heading,
+.actions-cell {
+  text-align: right !important;
+}
+
+.actions-cell {
+  width: 100px;
+}
+
+.edit-action,
+.delete-action {
+  display: inline-block;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+
+.edit-action svg,
+.delete-action svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.edit-action {
+  color: #4d8470;
+}
+
+.delete-action {
+  color: #dc3545;
+}

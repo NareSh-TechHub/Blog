@@ -1,0 +1,38 @@
+<div class="page-heading">
+  <h2>Blog Posts</h2>
+  <button class="create-button" type="button">＋ New Post</button>
+</div>
+
+<div class="table-frame">
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th class="actions-heading">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of posts">
+        <td>{{ post.title }}</td>
+        <td>{{ post.category }}</td>
+        <td>{{ post.date }}</td>
+        <td class="actions-cell">
+          <span class="edit-action" aria-hidden="true">
+            <svg viewBox="0 0 16 16">
+              <path d="M13.5 8.5v4a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"/>
+              <path d="m6 10 .4-2.2 6.7-6.7 2.2 2.2-6.7 6.7L6 10Z M11.8 1.8 14 4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+            </svg>
+          </span>
+          <span class="delete-action" aria-hidden="true">
+            <svg viewBox="0 0 16 16">
+              <path d="M5.5 1h5l.7 1.5H14v1.7H2V2.5h2.8L5.5 1ZM3.2 5h9.6l-.6 9H3.8l-.6-9Z" fill="currentColor"/>
+              <path d="M6.2 6.5v5.5M9.8 6.5v5.5" stroke="#fff" stroke-linecap="round" stroke-width=".9"/>
+            </svg>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

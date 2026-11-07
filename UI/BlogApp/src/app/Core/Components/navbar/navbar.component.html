@@ -10,26 +10,29 @@
             <a class="nav-link active white-text mt-2 mb-2" aria-current="page" [routerLink]="['/admin/categories']">Categories</a>
           </li>
           <li class="nav-item dropdown">
-            <button class="btn nav-control" type="button">Admin</button>
+            <!-- Restore role-based visibility when needed: *ngIf="user$ | async as user" && isAdminUser(user.roles) -->
+            <a class="btn nav-control" routerLink="/admin">Admin</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control nav-control custom-search" type="search" placeholder="Search for blog or Category..." aria-label="Search"/>
           <ng-container *ngIf="user$ | async as user; else signInBtn">
-            <div class="user-menu">
-              <button
-                class="user-trigger"
-                type="button"
-                aria-haspopup="true"
-                [attr.aria-expanded]="userMenuOpen"
-                (click)="userMenuOpen = !userMenuOpen">
-                <span class="user-avatar">{{ getUserInitial(user.email) }}</span>
-                <span class="user-name">{{ getDisplayName(user.email) }}</span>
-              </button>
-              <div class="user-menu-options" *ngIf="userMenuOpen">
-                <button type="button" (click)="onLogout()">Sign Out</button>
+            <ng-container *ngIf="user.email; else signInBtn">
+              <div class="user-menu">
+                <button
+                  class="user-trigger"
+                  type="button"
+                  aria-haspopup="true"
+                  [attr.aria-expanded]="userMenuOpen"
+                  (click)="userMenuOpen = !userMenuOpen">
+                  <span class="user-avatar">{{ getUserInitial(user.email) }}</span>
+                  <span class="user-name">{{ getDisplayName(user.email) }}</span>
+                </button>
+                <div class="user-menu-options" *ngIf="userMenuOpen">
+                  <button type="button" (click)="onLogout()">Sign Out</button>
+                </div>
               </div>
-            </div>
+            </ng-container>
           </ng-container>
           <ng-template #signInBtn>
             <button class="btn nav-control" type="button" [routerLink]="['/login']">Sign In</button>

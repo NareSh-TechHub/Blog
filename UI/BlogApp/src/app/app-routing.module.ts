@@ -1,39 +1,56 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoryListComponent } from './features/category/category-list/category-list/category-list.component';
 import { AddCategoryComponent } from './features/category/add-category/add-category.component';
 import { EditCategoryComponent } from './features/category/edit-category/edit-category.component';
-import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpost-list.component';
 import { AddBlogpostComponent } from './features/blog-post/add-blogpost/add-blogpost.component';
 import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { LandingComponent } from './features/landing/landing.component';
+import { AdminDashboardComponent } from './features/admin/admin-dashboard/admin-dashboard.component';
+import { CreatorAccessComponent } from './features/admin/creator-access/creator-access.component';
+import { AdminBlogPostListComponent } from './features/admin/blog-post-list/admin-blog-post-list.component';
+import { AdminCategoryListComponent } from './features/admin/category-list/admin-category-list.component';
 
 const routes: Routes = [
   {
-    path:'admin/categories',
-    component: CategoryListComponent
-  },
-  {
-    path:'admin/categories/add',
-    component: AddCategoryComponent
-  },
-  {
-    path:'admin/categories/:id',
-    component: EditCategoryComponent
-  },
-  {
-    path:'admin/blogposts',
-    component: BlogpostListComponent
-  },
-  {
-    path:'admin/blogposts/add',
-    component: AddBlogpostComponent
-  },
-  {
-    path:'admin/blogposts/:id',
-    component : EditBlogpostComponent
+    path: 'admin',
+    component: AdminDashboardComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'blogposts',
+        pathMatch: 'full'
+      },
+      {
+        path: 'categories/add',
+        component: AddCategoryComponent
+      },
+      {
+        path: 'categories/:id',
+        component: EditCategoryComponent
+      },
+      {
+        path: 'blogposts/add',
+        component: AddBlogpostComponent
+      },
+      {
+        path: 'blogposts/:id',
+        component: EditBlogpostComponent
+      },
+      {
+        path: 'categories',
+        component: AdminCategoryListComponent
+      },
+      {
+        path: 'blogposts',
+        component: AdminBlogPostListComponent
+      },
+      {
+        path: 'creator-access',
+        component: CreatorAccessComponent
+      }
+    ]
   },
   { 
     path: 'login', 

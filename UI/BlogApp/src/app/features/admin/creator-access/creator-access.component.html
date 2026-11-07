@@ -1,0 +1,25 @@
+<div class="page-heading">
+  <h2>Creator Access Requests</h2>
+</div>
+
+<div class="table-frame">
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date Requested</th>
+        <th class="actions-heading">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of requests">
+        <td>{{ request.name }}</td>
+        <td>{{ request.dateRequested }}</td>
+        <td class="actions-cell">
+          <span class="approve-action" aria-hidden="true">✓</span>
+          <span class="reject-action" aria-hidden="true">×</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
