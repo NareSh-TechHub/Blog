@@ -33,5 +33,6 @@ export class NavbarComponent {
     this.authService.logout().subscribe({
       next: () => this.router.navigateByUrl('/')
     });
+    console.log('User logged out successfully.');
   }
 }
