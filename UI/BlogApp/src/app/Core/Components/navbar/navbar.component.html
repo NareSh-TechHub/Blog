@@ -16,8 +16,20 @@
         <form class="d-flex" role="search">
           <input class="form-control nav-control custom-search" type="search" placeholder="Search for blog or Category..." aria-label="Search"/>
           <ng-container *ngIf="user$ | async as user; else signInBtn">
-            <span class="white-text me-2">{{ user.email }}</span>
-            <button class="btn nav-control" type="button" (click)="onLogout()">Sign Out</button>
+            <div class="user-menu">
+              <button
+                class="user-trigger"
+                type="button"
+                aria-haspopup="true"
+                [attr.aria-expanded]="userMenuOpen"
+                (click)="userMenuOpen = !userMenuOpen">
+                <span class="user-avatar">{{ getUserInitial(user.email) }}</span>
+                <span class="user-name">{{ getDisplayName(user.email) }}</span>
+              </button>
+              <div class="user-menu-options" *ngIf="userMenuOpen">
+                <button type="button" (click)="onLogout()">Sign Out</button>
+              </div>
+            </div>
           </ng-container>
           <ng-template #signInBtn>
             <button class="btn nav-control" type="button" [routerLink]="['/login']">Sign In</button>

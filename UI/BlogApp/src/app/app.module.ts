@@ -18,11 +18,13 @@ import { RegisterComponent } from './features/auth/register/register.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './Core/interceptor/auth.interceptor';
 import { LandingComponent } from './features/landing/landing.component';
+import { FooterComponent } from './Core/Components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    FooterComponent,
     CategoryListComponent,
     AddCategoryComponent,
     EditCategoryComponent,

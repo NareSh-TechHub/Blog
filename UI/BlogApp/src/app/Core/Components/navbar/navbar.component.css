@@ -18,3 +18,93 @@
 .custom-search {
     width: 300px; /* or whatever width you prefer */
   }
+
+.navbar form {
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.navbar form .nav-control {
+    margin-inline-start: 0;
+}
+
+.user-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.user-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 44px;
+    padding: 0.25rem 0.75rem 0.25rem 0.25rem;
+    border: 1px solid rgb(255 255 255 / 45%);
+    border-radius: 999px;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.user-trigger:hover,
+.user-trigger:focus-visible {
+    background: rgb(255 255 255 / 12%);
+}
+
+.user-avatar {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    place-items: center;
+    border: 1px solid blueviolet;
+    border-radius: 50%;
+    background: #fff;
+    color: #4D8470;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.user-name {
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-menu-options {
+    position: absolute;
+    z-index: 1050;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    min-width: 140px;
+    padding: 0.35rem;
+    border: 1px solid #dce8e2;
+    border-radius: 0.5rem;
+    background: #fff;
+    box-shadow: 0 0.35rem 1rem rgb(0 0 0 / 15%);
+}
+
+.user-menu-options button {
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    border: 0;
+    border-radius: 0.3rem;
+    background: #fff;
+    color: #4D8470;
+    text-align: left;
+}
+
+.user-menu-options button:hover,
+.user-menu-options button:focus-visible {
+    background: #edf3ee;
+}
+
+@media (max-width: 991.98px) {
+    .navbar form {
+        align-items: stretch;
+        flex-wrap: wrap;
+    }
+
+}

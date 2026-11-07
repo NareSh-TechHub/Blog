@@ -9,10 +9,21 @@ import { AuthService } from 'src/app/features/auth/services/auth.service';
 })
 export class NavbarComponent {
   user$ = this.authService.user$;
+  userMenuOpen = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
+  getDisplayName(email: string): string {
+    const name = email.split('@')[0] || email;
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  }
+
+  getUserInitial(email: string): string {
+    return this.getDisplayName(email).charAt(0);
+  }
+
   onLogout(): void {
+    this.userMenuOpen = false;
     this.authService.logout().subscribe({
       next: () => this.router.navigateByUrl('/')
     });

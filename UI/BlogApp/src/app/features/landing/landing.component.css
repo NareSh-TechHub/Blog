@@ -1,0 +1,269 @@
+.landing-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 48px 32px 72px;
+  color: #27332f;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  min-height: 340px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #edf3ee;
+}
+
+.hero-copy {
+  z-index: 1;
+  align-self: center;
+  padding: 48px 0 48px 54px;
+}
+
+.eyebrow {
+  color: #56816e;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 520px;
+  margin: 14px 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.2rem, 4vw, 3.45rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+}
+
+.hero-copy > p,
+.section-heading p {
+  color: #68756f;
+  line-height: 1.7;
+}
+
+.hero-copy > p {
+  max-width: 400px;
+  margin-bottom: 24px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero-actions a {
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.primary-link {
+  padding: 12px 18px;
+  border-radius: 7px;
+  background: #4d8470;
+  color: #fff;
+}
+
+.primary-link span {
+  margin-left: 8px;
+}
+
+.secondary-link {
+  color: #426d5d;
+}
+
+.hero-art {
+  position: relative;
+  min-height: 340px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #d6e5d9 4%, #b8d0bf 54%, #8fab98);
+}
+
+.art-sun {
+  position: absolute;
+  top: 34px;
+  right: 68px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #f5dcae;
+}
+
+.art-desk {
+  position: absolute;
+  right: -35px;
+  bottom: -82px;
+  left: -18px;
+  height: 205px;
+  transform: rotate(-8deg);
+  background: #c28e68;
+  box-shadow: 0 -12px 30px #4b665522;
+}
+
+.art-paper {
+  position: absolute;
+  right: 76px;
+  bottom: 56px;
+  width: 156px;
+  height: 112px;
+  transform: rotate(9deg);
+  border-radius: 3px;
+  background: repeating-linear-gradient(#fffdf6 0 18px, #d7d6ca 19px 20px);
+  box-shadow: 0 8px 18px #3c574533;
+}
+
+.interests {
+  padding-top: 54px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.section-heading h2 {
+  margin: 8px 0 4px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.section-heading p {
+  margin: 0;
+}
+
+.carousel-controls {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 4px;
+}
+
+.carousel-controls button {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid #dfe6e1;
+  border-radius: 50%;
+  background: #fff;
+  color: #426d5d;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.carousel-controls button:hover {
+  background: #edf3ee;
+}
+
+.category-track {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 2px 2px 12px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.category-track::-webkit-scrollbar {
+  display: none;
+}
+
+.category-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e8ece8;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 5px 16px #27332f0b;
+  scroll-snap-align: start;
+}
+
+.category-image {
+  height: 150px;
+}
+
+.category-copy {
+  padding: 16px 18px 18px;
+}
+
+.category-copy h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.category-copy p {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: #748078;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+@media (min-width: 700px) {
+  .category-track {
+    grid-auto-columns: calc((100% - 40px) / 3);
+  }
+}
+
+@media (max-width: 699px) {
+  .landing-page {
+    padding: 24px 18px 48px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    padding: 36px 26px 26px;
+  }
+
+  .hero-art {
+    min-height: 230px;
+  }
+
+  .art-sun {
+    top: 18px;
+    right: 44px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .art-desk {
+    bottom: -112px;
+  }
+
+  .art-paper {
+    right: 54px;
+    bottom: 34px;
+    transform: rotate(9deg) scale(0.85);
+  }
+
+  .interests {
+    padding-top: 38px;
+  }
+
+  .section-heading {
+    align-items: start;
+  }
+
+  .category-track {
+    grid-auto-columns: minmax(240px, 82%);
+  }
+}

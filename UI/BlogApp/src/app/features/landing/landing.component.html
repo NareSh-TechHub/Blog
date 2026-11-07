@@ -1,6 +1,42 @@
-<div class="container mt-5 text-center">
-  <h1>Welcome to Blog App</h1>
-  <p class="lead">Discover and share amazing blog posts.</p>
-  <a class="btn btn-primary me-2" routerLink="/login">Sign In</a>
-  <a class="btn btn-outline-primary" routerLink="/register">Sign Up</a>
-</div>
+<main class="landing-page">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <span class="eyebrow">A little inspiration goes a long way</span>
+      <h1 id="hero-title">Good stories make us feel more connected.</h1>
+      <p>Find fresh perspectives, explore your interests, and share what matters to you.</p>
+      <div class="hero-actions">
+        <a class="primary-link" routerLink="/register">Start reading <span aria-hidden="true">→</span></a>
+        <a class="secondary-link" routerLink="/login">I have an account</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="art-sun"></div>
+      <div class="art-desk"></div>
+      <div class="art-paper"></div>
+    </div>
+  </section>
+
+  <section class="interests" aria-labelledby="interests-title">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">Explore something new</span>
+        <h2 id="interests-title">Blogs you could be interested in...</h2>
+        <p>Thoughtful reads, gathered around the things you love.</p>
+      </div>
+      <div class="carousel-controls" *ngIf="categories.length > 3">
+        <button type="button" aria-label="Scroll to previous categories" (click)="scrollCategories(-1)">&#8592;</button>
+        <button type="button" aria-label="Scroll to more categories" (click)="scrollCategories(1)">&#8594;</button>
+      </div>
+    </div>
+
+    <div class="category-track" #categoryTrack>
+      <article class="category-card" *ngFor="let category of categories">
+        <div class="category-image" aria-hidden="true"></div>
+        <div class="category-copy">
+          <h3>{{ category.categoryName }}</h3>
+          <p>{{ category.description }}</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
